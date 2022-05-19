@@ -35,7 +35,7 @@
 - プラグイン > Web Export > 輸出Artboad
 ### エクスポート設定
 - Stylesheet, Script > External stylesheet, scriptにチェック
-- PCレイアウトの場合は Images > @2xのチェックを外す
+- Images > @2xのチェックを外す
 - Export Folder > 出力するブロックごとにフォルダを分ける
 
 ![エクスポート設定](/image_03.png)
