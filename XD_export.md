@@ -39,6 +39,51 @@
 
 ![エクスポート設定](/image_03.png)
 
-## 書き出したデータを編集する
-- idとクラス、画像ファイルにブロック名prefixを追加
-- 各ブロック一番外側のdivについて、position: absolute; を position: relative;に変更しておく
+## 書き出したデータを編集する- idとクラス、画像ファイルにブロック名prefixを追加
+- 書き出したHTMLのいちばん外側のdivにインラインで style="trasnform-origin: 0 0;" を設定
+- その外側にdivを追加して、idを設定する
+
+```html
+<div id="block-wrapper"> <!-- 書き出し後追加したdiv !-->
+  <div id="block" style="trasnform-origin: 0 0;"> <!-- 書き出し後いちばん外側にあるブロック !-->
+  ...
+  </div>
+</div>
+```
+
+- CSSで外側に追加したdivにposition:relativeを指定
+
+```css
+#block-wrapper {
+  position: relative;
+}
+```
+
+- JavaScriptでブロックの幅・高さを設定します
+- Customize.js で const blockList にブロック名を追記するか、
+
+```js
+const blockList = {
+  ...
+  ...
+  block: {
+    block: document.getElementById("block"),
+    wrapper: document.getElementById("block-wrapper"),
+  }
+};
+```
+- Twig内にJavaScriptを記述します
+
+```js
+{% block javascript %}
+<script type="text/javascript">
+$(window).on("load resize", function () {
+  const windowWidth = document.body.clientWidth;
+  const scale = windowWidth < 1366 ? windowWidth / 1366 : 1;
+  const block = document.getElementById("block");
+  block.style.transform = `scale(${scale})`;
+  $("#block-wrapper").css("height", block.clientHeight * scale);
+});
+</script>
+{% endblock %}
+```
