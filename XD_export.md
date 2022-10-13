@@ -52,13 +52,22 @@
 
 ## Web Exportで書き出し
 - プラグイン > Web Export > 輸出Artboad
+- XD上のグループやレイヤーについてメモ
+
+  - XD上でグループ化　有効
+  - リネーム　有効（英数字のみ
+  - レイヤー並べ替え　おそらく無効
+
 ### エクスポート設定
 - Stylesheet, Script > External stylesheet, scriptにチェック
 - Export Folder > 出力するブロックごとにフォルダを分ける
 
 ![エクスポート設定](/image_03.png)
 
-## 書き出したデータを編集する- idとクラス、画像ファイルにブロック名prefixを追加
+## 書き出したデータを編集する
+- idとクラス、画像ファイルにブロック名prefixを追加する（ HTML, CSS, 画像ファイル
+
+### ブロックリサイズのための設定
 - 書き出したHTMLのいちばん外側のdivにインラインで style="trasnform-origin: 0 0;" を設定
 - その外側にdivを追加して、idを設定する
 
@@ -70,7 +79,7 @@
 </div>
 ```
 
-- CSSで外側に追加したdivにposition:relativeを指定
+- CSS で外側に追加した div に position: relative; を指定
 
 ```css
 #block-wrapper {
